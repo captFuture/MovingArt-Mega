@@ -1,7 +1,11 @@
 #include <Arduino.h>
 #include <Wire.h>
 
-/* i2c pins on the mega are 20 (SDA), 21 (SCL) */
+/* i2c pins on the mega are 20 (SDA), 21 (SCL)
+connection example of more than one devicce
+https://howtomechatronics.com/tutorials/arduino/how-i2c-communication-works-and-how-to-use-it-with-arduino/
+*/
+
 
 /* i2c scanner
 void loop()
@@ -64,6 +68,7 @@ void loop() {
 void nanoStatus(byte addr){
   Wire.beginTransmission(addr);
   Wire.write(1); // send 1 (start command) to slave -> will respond with actual value or start new cycle
+    // probably a byte array should be sent with command and speed or whatever :D
   Wire.endTransmission();
 
   Wire.requestFrom(addr,10); // i do not know if this works correctly -> check nano sendEvent()
